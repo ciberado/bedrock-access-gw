@@ -1,8 +1,10 @@
 FROM public.ecr.aws/lambda/python:3.12
 
-COPY ./api ./api
+COPY src/api ./api
 
-COPY requirements.txt .
+COPY src/requirements.txt .
+
+WORKDIR /api
 
 RUN pip3 install -r requirements.txt -U --no-cache-dir
 
