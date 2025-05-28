@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
 
-COPY src/api /app
+COPY src/api /app/api
 COPY src/requirements.txt /app
 
 WORKDIR /app
