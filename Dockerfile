@@ -1,11 +1,10 @@
-FROM python:3
+FROM mcr.microsoft.com/devcontainers/python:1-3.12-bullseye
 
-COPY src/api ./api
+COPY src/api /app
+COPY src/requirements.txt /app
 
-COPY src/requirements.txt .
-
-WORKDIR /api
+WORKDIR /app
 
 RUN pip3 install -r requirements.txt -U --no-cache-dir
 
-CMD [ "api.app.handler" ]
+ENTRYPOINT ["uvicorn", "api.app:app", "--host", "0.0.0.0", "--port", "8000"]
